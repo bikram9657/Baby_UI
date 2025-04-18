@@ -115,11 +115,13 @@ export default function HomeScreen() {
                             Alert.alert("Coming Soon", `${card.title} log screen is not yet implemented.`);
                         } else {
                             // Navigate with parameters if they exist
+                            // Using 'as any' for pathname as a workaround for potential Expo Router type issues
                             router.push({ pathname: card.navigateTo as any, params: card.filterParam ?? undefined });
                         }
                     };
 
                     return (
+                        // Use Pressable for better feedback control if needed, or stick with Card onPress
                         <Card key={card.id} style={[styles.card, { backgroundColor: card.color }]} onPress={handlePress}>
                             <Card.Content style={styles.cardContent}>
                                 <MaterialCommunityIcons name={card.icon as any} size={60} color="#FFFFFF" style={styles.icon} />
